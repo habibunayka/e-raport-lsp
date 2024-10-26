@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::view('/login', 'auth.login');
 Route::view('/teacher', 'teacher.index');
 Route::view('/teacher/list', 'teacher.list');
