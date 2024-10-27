@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        {{-- <img class="header-image" src={{ asset('assets/images/smkn1cibinong.png') }} alt=""> --}}
+        <img class="header-image" src={{ asset('assets/images/smkhebat.jpg') }} alt="">
     </header>
 
     <div class="main-container">
@@ -43,7 +43,7 @@
                 @yield('content')
             </div>
             <footer class="footer">
-                <p>&copy; 2024 E-RAPOR LSP. Designed by <a href="https://habibunayka.com/" class="link-copy" target="_blank">Habibunayka</a> All rights reserved.</p>
+                <p>&copy; 2024 E-RAPOR LSP. Designed by <a href="https://habibunayka.com/" class="link-copy" target="_blank">Habibunayka</a>. All rights reserved.</p>
             </footer>
         </main>
     </div>

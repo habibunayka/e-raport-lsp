@@ -14,6 +14,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::middleware(['auth.check'])->group(function () {
     Route::view('/login', 'auth.login')->name('login');
     Route::post('/login', [AuthController::class, 'login']);

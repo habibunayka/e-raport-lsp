@@ -34,9 +34,8 @@ body {
 }
 
 header {
-    background-color: var(--primary);
+    background-color: #0766a8;
     color: var(--header-text);
-    padding: 1rem;
     text-align: center;
     font-weight: 600;
     width: 100%;
@@ -44,7 +43,7 @@ header {
 }
 
 header img {
-    width: 80px;
+    width: 300px;
 }
 
 .main-container {
@@ -57,7 +56,7 @@ header img {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 92vh;
+    height: 85vh;
     img {
         width: 100px;
     }
@@ -99,16 +98,15 @@ header img {
 
 .main {
     padding: 1rem;
-    min-height: 90vh;
+    min-height: 82vh;
 }
 
 .content {
-    max-height: 96vh;
+    max-height: 89vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    border-top-left-radius: 10px;
     background-color: #fff;
     overflow-y: auto;
 }
