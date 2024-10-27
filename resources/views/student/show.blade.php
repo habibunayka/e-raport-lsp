@@ -1,15 +1,5 @@
 @extends('layout.app')
 
-@section('sidebar')
-    @parent
-    <aside class="sidebar">
-        <ul>
-            <li><a href="/student">Dashboard</a></li>
-            <li><a href="/student/nilai" class="active">Nilai Raport</a></li>
-        </ul>
-    </aside>
-@endsection
-
 @section('content')
     <div class="show-container">
         <table class="table">
@@ -45,7 +35,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- Data raport siswa
+                {{--
                 <tr>
                     <td>1</td>
                     <td>Matematika</td>

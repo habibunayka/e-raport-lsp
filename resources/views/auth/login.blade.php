@@ -14,11 +14,23 @@
 </head>
 
 <body>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="session">
         <div class="left">
             <img src="/assets/images/smkn1cibinong.png" alt="">
+
         </div>
-        <form action="/student" class="log-in" autocomplete="off">
+        <form action="{{ url('/login') }}" method="POST" class="log-in" autocomplete="off">
+            @csrf
+            <input type="hidden" id="user_type" name="user_type" value="student">
             <h4>LOG IN</h4>
             <div class="switch">
                 <a href="#students" class="switch-active">Student</a>

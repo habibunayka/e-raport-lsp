@@ -21,24 +21,32 @@
     <div class="main-container">
         <div class="sidebar-container">
             <aside class="sidebar">
-                @section('sidebar')
-                @show
+                @if (session('user_type') === 'teacher')
+                    <ul>
+                        <li><a href="/teacher" class="{{ request()->is('teacher') ? 'active' : '' }}">Dashboard</a></li>
+                        <li><a href="/teacher/list" class="{{ request()->is('teacher/list') || request()->is('teacher/create') || request()->is('teacher/edit') ? 'active' : '' }}">List Raport</a></li>
+                    </ul>
+                @elseif (session('user_type') === 'student')
+                    <ul>
+                        <li><a href="/student" class="{{ request()->is('student') ? 'active' : '' }}">Dashboard</a></li>
+                        <li><a href="/student/nilai" class="{{ request()->is('student/nilai') ? 'active' : '' }}">Nilai Raport</a></li>
+                    </ul>
+                @else
+                    <p>Silakan login untuk mengakses menu.</p>
+                @endif
             </aside>
             <img src={{ asset('assets/images/smkn1cibinong.png') }} alt="">
         </div>
 
         <main class="content">
             <div class="main">
-            @yield('content')
-
+                @yield('content')
             </div>
             <footer class="footer">
                 <p>&copy; 2024 E-RAPOR LSP. Designed by <a href="https://habibunayka.com/" class="link-copy" target="_blank">Habibunayka</a> All rights reserved.</p>
             </footer>
         </main>
     </div>
-
-
 
     <script src={{ asset('assets/js/list.js') }}></script>
 </body>

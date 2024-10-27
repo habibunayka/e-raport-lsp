@@ -264,6 +264,32 @@ img {
     background-color: #fff;
 }
 
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-danger h4 {
+    margin: 0 0 10px;
+}
+
+.alert-danger ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
 #students {
     width: 100%;
 }

@@ -1,15 +1,5 @@
 @extends('layout.app')
 
-@section('sidebar')
-    @parent
-    <aside class="sidebar">
-        <ul>
-            <li><a href="/teacher">Dashboard</a></li>
-            <li><a href="/teacher/list" class="active">List Raport</a></li>
-        </ul>
-    </aside>
-@endsection
-
 @section('content')
     <div class="list-container">
         <h2>List Raport Siswa</h2>
@@ -32,7 +22,6 @@
                 </tr>
             </thead>
             <tbody id="data-table">
-                {{-- Gunakan data dari database dengan @foreach --}}
                 {{-- @foreach ($students as $index => $student)
                     <tr>
                         <td>{{ $index + 1 }}</td>

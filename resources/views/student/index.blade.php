@@ -1,18 +1,14 @@
 @extends('layout.app')
 
-@section('sidebar')
-    @parent
-    <aside class="sidebar">
-        <ul>
-            <li><a href="/student" class="active">Dashboard</a></li>
-            <li><a href="/student/nilai">Nilai Raport</a></li>
-        </ul>
-    </aside>
-@endsection
+
 
 @section('content')
     <div class="index">
         <div class="title">E-RAPORT SEKOLAH CENDIKIA</div>
         <div class="subtitle">Selamat datang, ${username}</div>
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
     </div>
 @endsection

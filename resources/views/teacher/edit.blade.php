@@ -1,14 +1,5 @@
 @extends('layout.app')
 
-@section('sidebar')
-    @parent
-    <aside class="sidebar">
-        <ul>
-            <li><a href="/teacher">Dashboard</a></li>
-            <li><a href="/teacher/list" class="active">List Raport</a></li>
-        </ul>
-    </aside>
-@endsection
 
 @section('content')
     <div class="create-container">

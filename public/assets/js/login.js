@@ -14,6 +14,8 @@ studentLink.addEventListener('click', function () {
     studentLink.classList.add('switch-active');
     teacherLink.classList.remove('switch-active');
     teacherLink.classList.add('switch-inactive');
+    document.getElementById('user_type').value = 'student';
+
 
     indicator.style.transform = 'translateX(0)';
 });
@@ -26,6 +28,7 @@ teacherLink.addEventListener('click', function () {
     teacherLink.classList.add('switch-active');
     studentLink.classList.remove('switch-active');
     studentLink.classList.add('switch-inactive');
+    document.getElementById('user_type').value = 'teacher';
 
     indicator.style.transform = 'translateX(90%)';
 });
