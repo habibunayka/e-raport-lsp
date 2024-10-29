@@ -2,33 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Siswa;
+use App\Models\Walas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    protected $students = [
-        ['NIS' => '12345', 'password' => 'password123'],
-        ['NIS' => '67890', 'password' => 'password456'],
-    ];
-
-    protected $teachers = [
-        ['NIG' => '54321', 'password' => 'password789'],
-        ['NIG' => '09876', 'password' => 'password101'],
-    ];
-
-    public function __construct()
-    {
-        foreach ($this->students as &$student) {
-            $student['password'] = Hash::make($student['password']);
-        }
-
-        foreach ($this->teachers as &$teacher) {
-            $teacher['password'] = Hash::make($teacher['password']);
-        }
-    }
-
-    public function login(Request $request)
+    // Selamat menghafal kakak kelas :p -Habib
+    public function login(Request $request, Siswa $siswa, Walas $walas)
     {
         $request->validate([
             'user_type' => 'required|string|in:student,teacher',
@@ -36,52 +18,49 @@ class AuthController extends Controller
 
         if ($request->user_type === 'student') {
             $request->validate([
-                'NIS' => 'required|string',
+                'nis' => 'required|string',
                 'student_password' => 'required|string',
             ]);
-            return $this->authenticateStudent($request);
+            return $this->authenticateStudent($request,  $siswa);
         } else {
             $request->validate([
-                'NIG' => 'required|string',
+                'nig' => 'required|string',
                 'teacher_password' => 'required|string',
             ]);
-            return $this->authenticateTeacher($request);
+            return $this->authenticateTeacher($request,  $walas);
         }
     }
-
-    private function authenticateStudent(Request $request)
+    private function authenticateStudent(Request $request, Siswa $siswa)
     {
-        foreach ($this->students as $student) {
-            if ($student['NIS'] === $request->NIS && Hash::check($request->student_password, $student['password'])) {
-                session(['user_type' => 'student', 'username' => $student['NIS']]);
+        $students = $siswa::all();
+        foreach ($students as $student) {
+            if ($student->nis === $request->nis && Hash::check($request->student_password, $student->password)) {
+                session(['user_type' => 'student', 'id' => $student->id, 'username' => $student->nama_siswa]);
                 return redirect()->intended('/student');
             }
         }
 
         return redirect()->back()->withInput()->withErrors([
-            'message' => 'NIS atau password siswa salah.'
+            'message' => 'nis atau password siswa salah.'
         ]);
     }
-
-    private function authenticateTeacher(Request $request)
+    private function authenticateTeacher(Request $request, Walas $walas)
     {
-        foreach ($this->teachers as $teacher) {
-            if ($teacher['NIG'] === $request->NIG && Hash::check($request->teacher_password, $teacher['password'])) {
-                session(['user_type' => 'teacher', 'username' => $teacher['NIG']]);
+        $teachers = $walas::all();
+        foreach ($teachers as $teacher) {
+            if ($teacher->nig === $request->nig && Hash::check($request->teacher_password, $teacher->password)) {
+                session(['user_type' => 'teacher', 'id' => $teacher->id, 'username' => $teacher->nama_walas]);
                 return redirect()->intended('/teacher');
             }
         }
 
         return redirect()->back()->withInput()->withErrors([
-            'message' => 'NIG atau password guru salah.'
+            'message' => 'nig atau password guru salah.'
         ]);
     }
-
-
-
     public function logout(Request $request)
     {
-        $request->session()->flush(); 
+        $request->session()->flush();
         return redirect('/login')->with('message', 'Anda telah berhasil logout.');
     }
 }

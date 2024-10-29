@@ -15,40 +15,81 @@
 
 <body>
     <header>
-        <img class="header-image" src={{ asset('assets/images/smkhebat.jpg') }} alt="">
+        <img class="header-image" src={{ asset('assets/images/smkn1cibinong.png') }} alt="">
+        <div class="banner">Banner</div>
     </header>
+
+    <div class="welcome">
+        <div class="pages">
+            @if (request()->is('teacher') || request()->is('teacher/edit'))
+                List Raport
+            @elseif (request()->is('teacher/create'))
+                Input Raport
+            @elseif (request()->is('student'))
+                Nilai Raport
+            @else
+                Dashboard
+            @endif
+        </div>
+        <div class="greet">Welcome, {{ session('username')}}</div>
+    </div>
 
     <div class="main-container">
         <div class="sidebar-container">
             <aside class="sidebar">
                 @if (session('user_type') === 'teacher')
                     <ul>
-                        <li><a href="/teacher" class="{{ request()->is('teacher') ? 'active' : '' }}">Dashboard</a></li>
-                        <li><a href="/teacher/list" class="{{ request()->is('teacher/list') || request()->is('teacher/create') || request()->is('teacher/edit') ? 'active' : '' }}">List Raport</a></li>
+                        <li><a href="/teacher"
+                                class="{{ request()->is('teacher') || request()->is('teacher/edit/*') ||  request()->is('teacher/view/*')  ? 'active' : '' }}">List
+                                Raport</a></li>
+                        <li><a href="/teacher/create"
+                                class="{{ request()->is('teacher/create') ? 'active' : '' }}">Input Raport</a></li>
                     </ul>
+                    <form action="{{ route('logout') }}" method="POST" class="logout-container"
+                        style="display: inline; width: 100%; ">
+                        @csrf
+                        <button type="submit" class="logout-button">Logout</button>
+                    </form>
                 @elseif (session('user_type') === 'student')
                     <ul>
-                        <li><a href="/student" class="{{ request()->is('student') ? 'active' : '' }}">Dashboard</a></li>
-                        <li><a href="/student/nilai" class="{{ request()->is('student/nilai') ? 'active' : '' }}">Nilai Raport</a></li>
+                        <li><a href="/student" class="{{ request()->is('student') ? 'active' : '' }}">Nilai Raport</a>
+                        </li>
                     </ul>
+                    <form action="{{ route('logout') }}" method="POST" class="logout-container"
+                        style="display: inline; width: 100%;">
+                        @csrf
+                        <button type="submit" class="logout-button">Logout</button>
+                    </form>
                 @else
                     <p>Silakan login untuk mengakses menu.</p>
                 @endif
+
             </aside>
-            <img src={{ asset('assets/images/smkn1cibinong.png') }} alt="">
         </div>
 
         <main class="content">
             <div class="main">
                 @yield('content')
             </div>
+
+            {{-- Kalau ada yang ga mengerti bisa hubungi via wa yang ada di portofolio gw --}}
             <footer class="footer">
-                <p>&copy; 2024 E-RAPOR LSP. Designed by <a href="https://habibunayka.com/" class="link-copy" target="_blank">Habibunayka</a>. All rights reserved.</p>
+                <p>&copy; 2024 E-RAPOR LSP. Created by <a href="https://habibunayka.com/" class="link-copy"
+                        target="_blank">Habibunayka</a> 11 RPL 2. All rights reserved.</p>
             </footer>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </main>
     </div>
 
-    <script src={{ asset('assets/js/list.js') }}></script>
+    {{-- <script src={{ asset('assets/js/list.js') }}></script> --}}
 </body>
 
 </html>

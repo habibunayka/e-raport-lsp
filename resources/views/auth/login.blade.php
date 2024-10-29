@@ -40,8 +40,8 @@
 
             <div id="students">
                 <div class="floating-label">
-                    <input placeholder="NIS" type="text" name="NIS" id="NIS" autocomplete="off">
-                    <label for="NIS">NIS:</label>
+                    <input placeholder="NIS" type="text" name="nis" id="nis" autocomplete="off">
+                    <label for="nis">NIS:</label>
                     <div class="icon profile-icon">
                         <svg class="svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <style type="text/css">
@@ -89,8 +89,8 @@
 
             <div id="teacher" style="display:none;">
                 <div class="floating-label">
-                    <input placeholder="NIG" type="text" name="NIG" id="NIG" autocomplete="off">
-                    <label for="NIG">NIG:</label>
+                    <input placeholder="NIG" type="text" name="nig" id="nig" autocomplete="off">
+                    <label for="nig">NIG:</label>
                     <div class="icon profile-icon">
                         <?xml version="1.0" encoding="UTF-8"?>
                         <svg class="svg" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

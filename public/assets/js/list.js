@@ -1,9 +1,9 @@
 const data = [
-    { no: 1, nis: '001', nama: 'Budi', matematika: 80, b_indonesia: 85, b_inggris: 90, kejuruan: 80 },
-    { no: 2, nis: '002', nama: 'Siti', matematika: 90, b_indonesia: 88, b_inggris: 86, kejuruan: 88 },
-    { no: 3, nis: '003', nama: 'Joko', matematika: 75, b_indonesia: 78, b_inggris: 74, kejuruan: 85 },
-    { no: 4, nis: '004', nama: 'Dewi', matematika: 85, b_indonesia: 80, b_inggris: 82, kejuruan: 81 },
-    { no: 5, nis: '005', nama: 'Andi', matematika: 95, b_indonesia: 92, b_inggris: 89, kejuruan: 94 },
+    { no: 1, nis: '001', nama: 'Budi', matematika: 80, indonesia: 85, inggris: 90, kejuruan: 80 },
+    { no: 2, nis: '002', nama: 'Siti', matematika: 90, indonesia: 88, inggris: 86, kejuruan: 88 },
+    { no: 3, nis: '003', nama: 'Joko', matematika: 75, indonesia: 78, inggris: 74, kejuruan: 85 },
+    { no: 4, nis: '004', nama: 'Dewi', matematika: 85, indonesia: 80, inggris: 82, kejuruan: 81 },
+    { no: 5, nis: '005', nama: 'Andi', matematika: 95, indonesia: 92, inggris: 89, kejuruan: 94 },
 ];
 
 // Kalau udah ada datanya bisa pakai ini bu.
@@ -13,7 +13,7 @@ let currentPage = 1;
 const rowsPerPage = 10;
 
 function calculateAverage(item) {
-    const totalScore = item.matematika + item.b_indonesia + item.b_inggris + item.kejuruan;
+    const totalScore = item.matematika + item.indonesia + item.inggris + item.kejuruan;
     return (totalScore / 4).toFixed(2);
 }
 
@@ -32,8 +32,8 @@ function displayData() {
             <td>${item.nis}</td>
             <td>${item.nama}</td>
             <td>${item.matematika}</td>
-            <td>${item.b_indonesia}</td>
-            <td>${item.b_inggris}</td>
+            <td>${item.indonesia}</td>
+            <td>${item.inggris}</td>
             <td>${item.kejuruan}</td>
             <td>${item.rata_rata}</td>
             <td><a href="/teacher/edit" class="edit">Edit</a> <a class="delete">Delete</a></td>
@@ -67,8 +67,8 @@ document.getElementById('search').addEventListener('input', function() {
             <td>${item.nis}</td>
             <td>${item.nama}</td>
             <td>${item.matematika}</td>
-            <td>${item.b_indonesia}</td>
-            <td>${item.b_inggris}</td>
+            <td>${item.indonesia}</td>
+            <td>${item.inggris}</td>
             <td>${item.kejuruan}</td>
             <td>${item.rata_rata}</td>
             <td><a href="/teacher/edit" class="edit">Edit</a> <a class="delete">Delete</a></td>

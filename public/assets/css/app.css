@@ -34,16 +34,51 @@ body {
 }
 
 header {
-    background-color: #0766a8;
+    display: flex;
+    justify-content: start;
+    padding: 0 62px;
+    padding-top: 10px;
+    background-color: var(--primary);
     color: var(--header-text);
-    text-align: center;
     font-weight: 600;
     width: 100%;
-    box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.12);
+    align-items: center;
 }
 
 header img {
-    width: 300px;
+    width: 55px;
+}
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    width: 600px;
+    height: 50px;
+    background-color: rgb(207, 207, 207);
+    z-index: 5;
+    color: black;
+    margin-left: 340px;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 400;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 7px;
+    color: white;
+}
+
+.pages {
+    width: 190px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .main-container {
@@ -98,17 +133,71 @@ header img {
 
 .main {
     padding: 1rem;
-    min-height: 82vh;
+    padding-bottom: 50px;
 }
 
 .content {
-    max-height: 89vh;
+    max-height: 84vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
     background-color: #fff;
     overflow-y: auto;
+    position: relative;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 15px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-danger h4 {
+    margin: 0 0 10px;
+}
+
+.alert-danger ul {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.logout-container:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.logout-button {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    text-align: left;
+    border: 0;
+    background-color: var(--primary);
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 .index {
@@ -127,35 +216,21 @@ header img {
         font-size: 1.2rem;
         color: #666;
     }
-    .logout-button {
-        background-color: #f44336;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        cursor: pointer;
-        margin-top: 20px;
-    }
 
-    .logout-button:hover {
-        background-color: #d32f2f;
-    }
 }
 
 
 .footer {
+    display: flex;
     bottom: 0;
     background-color: white;
     border-top: 1px #ccc solid;
     color: #333;
-    text-align: center;
+    justify-content: center;
     padding: 0.5rem;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    width: 87vw;
 }
 
 .link-copy {
@@ -177,7 +252,7 @@ header img {
 
     .add {
         padding: 8px 16px;
-        margin: 0 5px;
+        margin: 60px 5px;
         cursor: pointer;
         color: white;
         background-color: var(--primary);
@@ -189,6 +264,7 @@ header img {
     .table {
         width: 100%;
         border-collapse: collapse;
+        margin-top: 20px;
     }
 
     .table tr:hover {
@@ -246,7 +322,8 @@ header img {
     }
 
     .edit,
-    .delete {
+    .delete,
+    .view {
         padding: 8px 16px;
         margin: 0 5px;
         cursor: pointer;
@@ -257,12 +334,16 @@ header img {
     }
 
     .edit {
-        background-color: var(--primary);
-        color: white;
+        background-color: rgb(255, 208, 0);
+        color: black;
     }
 
     .delete {
         background-color: red;
+    }
+
+    .view {
+        background-color: var(--primary);
     }
 }
 
@@ -278,7 +359,7 @@ header img {
     }
 
     .form-group {
-        margin-bottom: 15px;
+        margin: 15px 0;
     }
 
     .form-group label {
@@ -289,6 +370,15 @@ header img {
     }
 
     .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .form-group select {
         width: 100%;
         padding: 10px;
         font-size: 16px;
@@ -322,32 +412,27 @@ header img {
     }
 }
 
+.index-siswa {
+    padding: 0px 250px;
+}
+
 .show-container {
     margin: 20px;
 
-    .search-input {
-        margin: 20px 0;
-        padding: 5px;
-        width: 20%;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .add {
-        padding: 8px 16px;
-        margin: 0 5px;
-        cursor: pointer;
-        color: white;
-        background-color: var(--primary);
-        border: none;
-        border-radius: 4px;
-        text-decoration: none;
+    h1 {
+        font-weight: 600;
+        margin-bottom: 25px;
+        width: 100%;
+        text-align: center;
     }
 
     .table {
         width: 100%;
         border-collapse: collapse;
+    }
+
+    .left {
+        text-align: left !important;
     }
 
     .table tr:hover {
@@ -360,57 +445,47 @@ header img {
         text-align: left;
         border: 1px #ccc solid;
         position: relative;
+        text-align: center;
     }
 
     .table th {
         background-color: var(--primary-light);
     }
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 5px;
+    .t-head {
+        border: 0;
+        font-size: 16px;
+        padding: 0 6px;
+
     }
 
-    #page-number {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 10px;
+    .t-head td {
+        width: 30%;
     }
 
-    .prev,
-    .next {
-        padding: 8px 16px;
-        margin: 0 5px;
-        cursor: pointer;
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        border-radius: 4px;
+    .right {
+        font-weight: 600;
     }
+}
 
-    .edit,
-    .delete {
-        padding: 8px 16px;
-        margin: 0 5px;
-        cursor: pointer;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        font-size: 14px;
-    }
+.walas-container {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    margin-top: 40px;
+}
 
-    .edit {
-        background-color: var(--primary);
-        color: white;
-    }
+.walas {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
 
-    .delete {
-        background-color: red;
-    }
+.strip {
+    width: 100%;
+    margin-top: 100px;
+    letter-spacing: -3px;
 }
 
 .raport-container {
