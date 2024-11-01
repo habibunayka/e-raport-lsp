@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title', 'Document')</title>
+    <title>@yield('title', 'ERaport LSP')</title>
     <link rel="stylesheet" href={{ asset('assets/css/app.css') }}>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
 </head>
 
 <body>
@@ -25,13 +26,13 @@
                 List Raport
             @elseif (request()->is('teacher/create'))
                 Input Raport
-            @elseif (request()->is('student'))
+            @elseif (request()->is('student') || request()->is('teacher/view'))
                 Nilai Raport
             @else
                 Dashboard
             @endif
         </div>
-        <div class="greet">Welcome, {{ session('username')}}</div>
+        <div class="greet">Welcome, {{ session('username') }}</div>
     </div>
 
     <div class="main-container">
@@ -40,7 +41,8 @@
                 @if (session('user_type') === 'teacher')
                     <ul>
                         <li><a href="/teacher"
-                                class="{{ request()->is('teacher') || request()->is('teacher/edit/*') ||  request()->is('teacher/view/*')  ? 'active' : '' }}">List
+                                class="{{ request()->is('teacher') || request()->is('teacher/edit/*') ||
+                                request()->is('teacher/view/*') ? 'active' : '' }}">List
                                 Raport</a></li>
                         <li><a href="/teacher/create"
                                 class="{{ request()->is('teacher/create') ? 'active' : '' }}">Input Raport</a></li>
@@ -72,7 +74,7 @@
                 @yield('content')
             </div>
 
-            {{-- Kalau ada yang ga mengerti bisa hubungi via wa yang ada di portofolio gw --}}
+            {{-- Kalau ada yang ga mengerti bisa hubungi via wa yang ada di portofolionya --}}
             <footer class="footer">
                 <p>&copy; 2024 E-RAPOR LSP. Created by <a href="https://habibunayka.com/" class="link-copy"
                         target="_blank">Habibunayka</a> 11 RPL 2. All rights reserved.</p>
@@ -88,8 +90,6 @@
             @endif
         </main>
     </div>
-
-    {{-- <script src={{ asset('assets/js/list.js') }}></script> --}}
 </body>
 
 </html>

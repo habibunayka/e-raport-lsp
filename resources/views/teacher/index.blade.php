@@ -3,8 +3,6 @@
 @section('content')
     <div class="list-container">
         <a href="/teacher/create" class="add">Tambah Data</a>
-        {{-- <input type="text" id="search" placeholder="Cari berdasarkan nama..." class="search-input" /> --}}
-
         <table class="table">
             <thead>
                 <tr>
@@ -36,7 +34,8 @@
                             <form action="/teacher/destroy/{{ $nilai->id }}" method="post" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Apakah anda ingin menghapus data ini?')" class="delete">Delete</button>
+                                <button type="submit" onclick="return confirm('Apakah anda ingin menghapus data ini?')"
+                                    class="delete">Delete</button>
                             </form>
                         </td>
                     </tr>

@@ -16,7 +16,6 @@ studentLink.addEventListener('click', function () {
     teacherLink.classList.add('switch-inactive');
     document.getElementById('user_type').value = 'student';
 
-
     indicator.style.transform = 'translateX(0)';
 });
 
@@ -32,7 +31,3 @@ teacherLink.addEventListener('click', function () {
 
     indicator.style.transform = 'translateX(90%)';
 });
-
-function redirectToStudent() {
-    window.location.href = "./student";
-}

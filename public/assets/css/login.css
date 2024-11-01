@@ -240,7 +240,8 @@ input {
     overflow: hidden;
     max-height: fit-content;
     width: 300px;
-    padding-right: 4rem;
+    padding: 2.3rem 0;
+    padding-right: 3rem;
     border-radius: 20px;
 }
 
@@ -263,7 +264,7 @@ img {
     padding: 122px 0;
     animation-delay: 1.2s;
     z-index: 2;
-    background-color: rgb(123, 215, 255);
+    background: linear-gradient(to left, rgb(123, 215, 255), rgb(55, 175, 225));
 }
 
 .alert {

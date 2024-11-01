@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Nilai;
 use App\Models\Siswa;
-use App\Models\Walas;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
     public function index()
     {
-        $nilais = Nilai::with('siswa')->where('walas_id', session('id'))->get();
+        $nilais = Nilai::with('siswa')
+            ->where('walas_id', session('id'))->get();
 
         return view('teacher.index', compact('nilais'));
     }
@@ -44,7 +44,8 @@ class TeacherController extends Controller
         $nilai = Nilai::where('siswa_id', $request->siswa_id)->first();
 
         if ($nilai) {
-            return redirect('/teacher/create')->withErrors(['siswa_id' => 'Nilai untuk siswa ini sudah ada.']);
+            return redirect('/teacher/create')
+                ->withErrors(['siswa_id' => 'Nilai untuk siswa ini sudah ada.']);
         }
 
         $rata_rata =  round(($request->matematika + $request->indonesia + $request->inggris +
@@ -109,6 +110,7 @@ class TeacherController extends Controller
 
         return back();
     }
+    
     public function grade($nilai)
     {
         if ($nilai >= 90) {
@@ -128,11 +130,11 @@ class TeacherController extends Controller
     {
         $nilai = Nilai::with('siswa')->where('siswa_id', $id)->first();
 
-        if($nilai === null) {
+        if ($nilai === null) {
             return back()->withErrors('Tidak ada data yang ditemukan');
         }
 
-        $siswa = Siswa::with('nilai','kelas')->find($nilai->siswa_id);
+        $siswa = Siswa::with('nilai', 'kelas')->find($nilai->siswa_id);
 
         $walas = Nilai::with('walas')->first();
 
